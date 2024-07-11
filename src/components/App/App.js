@@ -6,6 +6,9 @@ import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Spotify from "../../util/Spotify";
 
+import SaveToSpotifyButton from '../SaveToSpotifyButton';
+import SearchButton from '../SearchButton';
+
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState("New Playlist");
@@ -59,6 +62,8 @@ const App = () => {
             onRemove={removeTrack}
             onSave={savePlaylist}
           />
+          <SaveToSpotifyButton />
+          <SearchButton />
         </div>
       </div>
     </div>
