@@ -14,48 +14,45 @@ const App = () => {
   const [playlistName, setPlaylistName] = useState('New Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
-  // Funzione per eseguire la ricerca e aggiornare searchResults
+  // Function to perform search and update searchResults
   const search = async (term) => {
     try {
       const results = await Spotify.search(term);
       setSearchResults(results);
     } catch (error) {
-      console.error('Errore durante la ricerca:', error);
+      console.error('Error during search:', error);
       setSearchResults([]);
     }
   };
 
-  // Funzione per aggiornare il nome della playlist
+  // Function to update playlist name
   const updatePlaylistName = (name) => {
     setPlaylistName(name);
   };
 
-  // Funzione per aggiungere una traccia alla playlist
+  // Function to add a track to the playlist
   const addTrack = (track) => {
     if (!playlistTracks.some(savedTrack => savedTrack.id === track.id)) {
       setPlaylistTracks([...playlistTracks, track]);
     }
   };
 
-  // Funzione per rimuovere una traccia dalla playlist
+  // Function to remove a track from the playlist
   const removeTrack = (track) => {
     setPlaylistTracks(playlistTracks.filter(savedTrack => savedTrack.id !== track.id));
   };
 
-  // Funzione per salvare la playlist su Spotify
-  const savePlaylist = async (trackURIs) => {
+  // Function to save the playlist to Spotify
+  const savePlaylist = async () => {
     try {
-      // Simulazione di una chiamata API per salvare la playlist su Spotify
-      console.log('Salvataggio della playlist con URI:', trackURIs);
-
-      // Simulazione di reset della playlist
+      const trackUris = playlistTracks.map(track => track.uri);
+      await Spotify.savePlaylist(playlistName, trackUris);
       setPlaylistName('New Playlist');
       setPlaylistTracks([]);
-      
-      alert('Playlist salvata con successo!');
+      alert('Playlist saved successfully!');
     } catch (error) {
-      console.error('Errore nel salvataggio della playlist:', error);
-      alert('Si è verificato un errore durante il salvataggio della playlist.');
+      console.error('Error saving playlist:', error);
+      alert('An error occurred while saving the playlist.');
     }
   };
 
@@ -71,10 +68,10 @@ const App = () => {
             playlistTracks={playlistTracks} 
             onNameChange={updatePlaylistName} 
             onRemove={removeTrack} 
-            onSave={savePlaylist} // Passiamo la funzione savePlaylist al componente Playlist
+            onSave={savePlaylist} // Pass savePlaylist function to Playlist component
           />
         </div>
-        <SaveToSpotifyButton />
+        <SaveToSpotifyButton onClick={savePlaylist} />
         <SearchButton />
       </div>
     </div>
