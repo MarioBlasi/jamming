@@ -1,4 +1,3 @@
-// components/App.js
 
 import React, { useState } from 'react';
 import './App.css';
@@ -61,6 +60,8 @@ const App = () => {
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
       <div className="App">
         <SearchBar onSearch={search} />
+        <SaveToSpotifyButton onClick={savePlaylist} />
+        <SearchButton />
         <div className="App-playlist">
           <SearchResults searchResults={searchResults} onAddTrack={addTrack} />
           <Playlist 
@@ -71,8 +72,7 @@ const App = () => {
             onSave={savePlaylist} // Pass savePlaylist function to Playlist component
           />
         </div>
-        <SaveToSpotifyButton onClick={savePlaylist} />
-        <SearchButton />
+        
       </div>
     </div>
   );

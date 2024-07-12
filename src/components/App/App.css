@@ -10,7 +10,7 @@ html {
 
 h1 {
   padding: .77rem 0;
-  background-color: red;
+  background-image: url('./text.jpg');
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-size: 1.88rem;
@@ -28,10 +28,8 @@ h2 {
 .App {
   height: 100%;
   padding: 0 17%;
-  background-image: url('./music-playe.webp');
-  background-size: cover;
+  background-image: url('./par.jpg');
   background-position: center;
-  background-repeat: no-repeat;
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import './SaveToSpotifyButton.css';
 
-const SaveToSpotifyButton = () => {
+const SaveToSpotifyButton = ({ onClick }) => {
   return (
-    <button className="save-to-spotify-button">
+    <button className="save-to-spotify-button" onClick={onClick}>
       Save To Spotify
     </button>
   );
