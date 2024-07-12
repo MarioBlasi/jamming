@@ -1,28 +1,17 @@
-import React, { useCallback } from "react";
+import React from 'react';
+import TrackList from '../TrackList/TrackList';
+import './Playlist.css';
 
-import "./Playlist.css";
-
-import TrackList from "../TrackList/TrackList";
-
-const Playlist = (props) => {
-  const handleNameChange = useCallback(
-    (event) => {
-      props.onNameChange(event.target.value);
-    },
-    [props.onNameChange]
-  );
+const Playlist = ({ playlistName, playlistTracks, onNameChange, onRemove }) => {
+  const handleNameChange = (e) => {
+    onNameChange(e.target.value);
+  };
 
   return (
     <div className="Playlist">
-      <input onChange={handleNameChange} defaultValue={"New Playlist"} />
-      <TrackList
-        tracks={props.playlistTracks}
-        isRemoval={true}
-        onRemove={props.onRemove}
-      />
-      <button className="Playlist-save" onClick={props.onSave}>
-        SAVE TO SPOTIFY
-      </button>
+      <input value={playlistName} onChange={handleNameChange} />
+      <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true} />
+      <button className="Playlist-save">SAVE TO SPOTIFY</button>
     </div>
   );
 };
