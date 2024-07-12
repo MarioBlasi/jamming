@@ -6,7 +6,13 @@ const TrackList = ({ tracks, onAdd, onRemove, isRemoval }) => {
   return (
     <div className="TrackList">
       {tracks.map(track => (
-        <Track key={track.id} track={track} onAdd={onAdd} onRemove={onRemove} isRemoval={isRemoval} />
+        <Track 
+          key={track.id}
+          track={track} 
+          onAdd={onAdd}  // Passa la funzione onAdd al componente Track
+          onRemove={onRemove} 
+          isRemoval={isRemoval} 
+        />
       ))}
     </div>
   );

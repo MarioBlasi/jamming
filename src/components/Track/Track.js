@@ -3,7 +3,7 @@ import './Track.css';
 
 const Track = ({ track, onAdd, onRemove, isRemoval }) => {
   const addTrack = () => {
-    onAdd(track);
+    onAdd(track);  // Chiamata alla funzione onAdd quando il pulsante "+" viene cliccato
   };
 
   const removeTrack = () => {

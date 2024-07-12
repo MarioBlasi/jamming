@@ -28,10 +28,9 @@ const App = () => {
 
   // Funzione per aggiungere una traccia alla playlist
   const addTrack = (track) => {
-    if (playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
-      return;
+    if (!playlistTracks.some(savedTrack => savedTrack.id === track.id)) {
+      setPlaylistTracks([...playlistTracks, track]);
     }
-    setPlaylistTracks([...playlistTracks, track]);
   };
 
   // Funzione per rimuovere una traccia dalla playlist
@@ -45,7 +44,7 @@ const App = () => {
       <div className="App">
         <SearchBar onSearch={search} />
         <div className="App-playlist">
-          <SearchResults searchResults={searchResults} onAdd={addTrack} />
+          <SearchResults searchResults={searchResults} onAddTrack={addTrack} />
           <Playlist 
             playlistName={playlistName} 
             playlistTracks={playlistTracks} 
@@ -61,3 +60,4 @@ const App = () => {
 };
 
 export default App;
+
