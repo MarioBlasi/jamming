@@ -37,7 +37,7 @@ const App = () => {
   const removeTrack = (track) => {
     setPlaylistTracks(playlistTracks.filter(savedTrack => savedTrack.id !== track.id));
   };
-
+  
   return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>

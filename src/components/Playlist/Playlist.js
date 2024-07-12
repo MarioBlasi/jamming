@@ -9,7 +9,12 @@ const Playlist = ({ playlistName, playlistTracks, onNameChange, onRemove }) => {
 
   return (
     <div className="Playlist">
-      <input value={playlistName} onChange={handleNameChange} />
+      <input
+        value={playlistName}
+        onChange={handleNameChange}
+        placeholder="Enter playlist name"
+        className="Playlist-input"
+      />
       <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true} />
       <button className="Playlist-save">SAVE TO SPOTIFY</button>
     </div>
